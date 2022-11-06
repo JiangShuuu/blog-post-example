@@ -6,6 +6,8 @@ import Counter03 from "./pages/count/counter-ctx-use-reducer";
 
 import MangerZustand from './pages/statemanager/statemanager-zustand'
 import MangerContext from './pages/statemanager/statemanager-context'
+import MangetContextSelector from './pages/statemanager/statemanager-context-selector'
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -15,6 +17,7 @@ export default function App() {
         <Route path="/counter-03" element={<Counter03 />}></Route>
         <Route path="/manager01" element={<MangerZustand />}></Route>
         <Route path="/manager02" element={<MangerContext />}></Route>
+        <Route path="/manager03" element={<MangetContextSelector />}></Route>
       </Routes>
     </BrowserRouter>
   );
