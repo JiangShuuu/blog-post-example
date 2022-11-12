@@ -21,8 +21,8 @@ const useStore = () => {
     cartCount,
     login: useCallback(() => setUser('John'), []),
     logout: useCallback(() => setUser(''), []),
-    addToCart: useCallback(() => dispatch({type: 'add'})),
-    reduceToCart: useCallback(() => dispatch({type: 'reduce'}))
+    addToCart: useCallback(() => dispatch({type: 'add'}), []),
+    reduceToCart: useCallback(() => dispatch({type: 'reduce'}), [])
   }
 }
 
