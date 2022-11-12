@@ -1,7 +1,6 @@
-import { useLogin, useAddToCart, useCartCount, useLogout, useUser, StoreContextProvider } from "./store-context"
+import { useLogin, useReduceToCart, useAddToCart, useCartCount, useLogout, useUser, StoreContextProvider } from "./store-context"
 
 const LoginSection = () => {
-
   return (
     <div>
       <button onClick={useLogin()}>Login</button>
@@ -22,6 +21,7 @@ const AddToCartSection = () => {
   return (
     <div>
       <button onClick={useAddToCart()}>Add To Cart</button>
+      <button onClick={useReduceToCart()}>Reduce To Cart</button>
     </div>
   );
 };

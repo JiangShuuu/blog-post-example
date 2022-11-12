@@ -15,9 +15,9 @@ export default function App() {
         <Route path="/counter-01" element={<Counter01 />}></Route>
         <Route path="/counter-02" element={<Counter02 />}></Route>
         <Route path="/counter-03" element={<Counter03 />}></Route>
-        <Route path="/manager01" element={<MangerZustand />}></Route>
-        <Route path="/manager02" element={<MangerContext />}></Route>
-        <Route path="/manager03" element={<MangetContextSelector />}></Route>
+        <Route path="/manager-context" element={<MangerContext />}></Route>
+        <Route path="/manager-context-selector" element={<MangetContextSelector />}></Route>
+        <Route path="/manager-zustand" element={<MangerZustand />}></Route>
       </Routes>
     </BrowserRouter>
   );
