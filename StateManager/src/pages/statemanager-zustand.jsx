@@ -1,4 +1,4 @@
-import { useLogin, useAddToCart, useCartCoint, useLogout, useUser } from "../store/store-zustand"
+import { useLogin, useAddToCart, useCartCoint, useLogout, useUser, useReduceToCart } from "../store/store-zustand"
 
 const LoginSection = () => {
 
@@ -18,18 +18,22 @@ const UserSection = () => {
 }
 
 const AddToCartSection = () => {
+  const addToCart = useAddToCart()
+  const reduceToCart = useReduceToCart()
 
   return (
     <div>
-      <button onClick={useAddToCart()}>Add To Cart</button>
+      <button onClick={addToCart}>Add To Cart</button>
+      <button onClick={reduceToCart}>Add To Cart</button>
     </div>
   );
 };
 
 const CartCountSection = () => {
-
+  const count = useCartCoint()
+  
   return (
-    <div>Cart Count: {useCartCoint()}</div>
+    <div>Cart Count: {count}</div>
   )
 }
 
