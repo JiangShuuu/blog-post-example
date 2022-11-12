@@ -7,6 +7,5 @@ export default function Child() {
       <div>Child</div>
       <ChildNav />
     </div>
-    
   )
 }
