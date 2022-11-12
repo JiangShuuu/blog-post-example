@@ -1,4 +1,4 @@
-import { useLogin, useAddToCart, useCartCoint, useLogout, useUser } from "./store-zustand"
+import { useLogin, useAddToCart, useCartCoint, useLogout, useUser } from "../store/store-zustand"
 
 const LoginSection = () => {
 

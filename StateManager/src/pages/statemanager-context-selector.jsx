@@ -6,7 +6,7 @@ import {
   useCartCount,
   StoreContextProvider,
   useReduceToCart
-} from "./store-context-selector";
+} from "../store/store-context-selector";
 
 const LoginSection = () => {
   const login = useLogin();

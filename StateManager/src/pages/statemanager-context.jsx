@@ -1,4 +1,4 @@
-import { useLogin, useReduceToCart, useAddToCart, useCartCount, useLogout, useUser, StoreContextProvider } from "./store-context"
+import { useLogin, useReduceToCart, useAddToCart, useCartCount, useLogout, useUser, StoreContextProvider } from "../store/store-context"
 
 const LoginSection = () => {
   const login = useLogin()
