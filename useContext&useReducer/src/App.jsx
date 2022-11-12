@@ -1,6 +1,6 @@
 import './App.css'
 import Child from './components/Child'
-import { MenuProvider } from './context/MenuContext'
+import { MenuProvider } from './context/ColorContext'
 
 function App() {
   return (

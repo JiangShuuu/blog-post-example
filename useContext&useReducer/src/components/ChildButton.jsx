@@ -1,5 +1,5 @@
 import React from 'react'
-import { useColorToggleContext } from '../context/MenuContext'
+import { useColorToggleContext } from '../context/ColorContext'
 
 export default function ChildButton() {
   const { toggleColor } = useColorToggleContext()
