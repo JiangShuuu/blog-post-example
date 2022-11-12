@@ -5,6 +5,7 @@ import {
   useUser,
   useCartCount,
   StoreContextProvider,
+  useReduceToCart
 } from "./store-context-selector";
 
 const LoginSection = () => {
@@ -26,9 +27,11 @@ const UserSection = () => {
 
 const AddToCartSection = () => {
   const addToCart = useAddToCart();
+  const reduceToCart = useReduceToCart()
   return (
     <div>
       <button onClick={addToCart}>Add To Cart</button>
+      <button onClick={reduceToCart}>Reduct To Cart</button>
     </div>
   );
 };

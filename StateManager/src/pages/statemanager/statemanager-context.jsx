@@ -1,10 +1,12 @@
 import { useLogin, useReduceToCart, useAddToCart, useCartCount, useLogout, useUser, StoreContextProvider } from "./store-context"
 
 const LoginSection = () => {
+  const login = useLogin()
+  const logout = useLogout()
   return (
     <div>
-      <button onClick={useLogin()}>Login</button>
-      <button onClick={useLogout()}>Logout</button>
+      <button onClick={login}>Login</button>
+      <button onClick={logout}>Logout</button>
     </div>
   )
 }
@@ -17,19 +19,20 @@ const UserSection = () => {
 }
 
 const AddToCartSection = () => {
-
+  const addToCart = useAddToCart()
+  const reduceToCart = useReduceToCart()
   return (
     <div>
-      <button onClick={useAddToCart()}>Add To Cart</button>
-      <button onClick={useReduceToCart()}>Reduce To Cart</button>
+      <button onClick={addToCart}>Add To Cart</button>
+      <button onClick={reduceToCart}>Reduce To Cart</button>
     </div>
   );
 };
 
 const CartCountSection = () => {
-
+  const count = useCartCount()
   return (
-    <div>Cart Count: {useCartCount()}</div>
+    <div>Cart Count: {count}</div>
   )
 }
 
