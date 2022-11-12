@@ -1,11 +1,14 @@
 import React from 'react'
-import { useMenuToggleContext } from '../context/MenuContext'
+import { useColorToggleContext } from '../context/MenuContext'
 import ChildButton from './ChildButton'
 export default function ChildNav() {
-  const { isMenuOpen } = useMenuToggleContext()
+  const { colorChange } = useColorToggleContext()
+
+  const color = colorChange ? { color: 'red' } : { color: 'blue' }
+
   return (
     <div>
-      <h1>
+      <h1 style={color}>
         ChildNav
       </h1>
       <ChildButton />

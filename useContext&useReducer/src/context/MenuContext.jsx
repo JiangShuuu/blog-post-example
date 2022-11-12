@@ -3,17 +3,17 @@ import React, { useState, useContext, createContext } from 'react';
 export const MenuContexts = createContext()
 
 export const MenuProvider = ({ children }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [colorChange, setColorChange] = useState(false)
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
+  const toggleColor = () => {
+    setColorChange(!colorChange)
   }
 
   return (
-    <MenuContexts.Provider value={{ isMenuOpen, toggleMenu }}>
+    <MenuContexts.Provider value={{ colorChange, toggleColor }}>
       {children}
     </MenuContexts.Provider>
   )
 }
 
-export const useMenuToggleContext = () => useContext(MenuContexts)
+export const useColorToggleContext = () => useContext(MenuContexts)
