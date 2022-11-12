@@ -1,11 +1,12 @@
 import { useLogin, useAddToCart, useCartCoint, useLogout, useUser, useReduceToCart } from "../store/store-zustand"
 
 const LoginSection = () => {
-
+	const login = useLogin()
+	const logout = useLogout()
   return (
     <div>
-      <button onClick={useLogin()}>Login</button>
-      <button onClick={useLogout()}>Logout</button>
+      <button onClick={login}>Login</button>
+      <button onClick={logout}>Logout</button>
     </div>
   )
 }
