@@ -22,7 +22,7 @@ export default function HookUseTransition() {
 
   const filteredProducts = filterProducts(filterTerm);
 
-  const updateFilterHandler = (event: any) => {
+  const updateFilterHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     startTransition(() => {
       setFilterTerm(event.target.value);
     });

@@ -12,6 +12,7 @@ export default function Home() {
       <main>
         <header>
           <Link href='/hookUseTransitionFilter'>useTransition</Link>
+          <Link href='/hookUseDefferedValue'>useDefferedValue</Link>
           <Link href='/hookUseId'>useId</Link>
         </header>
       </main>
