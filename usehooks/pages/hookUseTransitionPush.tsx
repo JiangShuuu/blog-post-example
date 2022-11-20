@@ -1,4 +1,4 @@
-import React, { useState, useTransition } from 'react';
+import React, { useEffect, useState, useTransition, useDeferredValue } from 'react';
 import Link from 'next/link';
 
 const generateProducts = () => {
@@ -10,25 +10,35 @@ const generateProducts = () => {
 };
 
 export default function HookUseTransition2() {
-  console.log('reRender');
   const [isPending, startTransition] = useTransition();
   const [list, setList] = useState([] as string[]);
+  const [input, setInput] = useState('');
 
-  const LIST_SIZE = 20000;
+  const LIST_SIZE = 15000;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    startTransition(() => {
-      const products = [] as string[];
-      for (let i = 0; i < LIST_SIZE; i++) {
-        products.push(e.target.value);
-      }
-      setList(products);
-    });
+    setInput(e.target.value);
   };
+
+  const defferedInput = useDeferredValue(input);
+
+  useEffect(() => {
+    startTransition(() => {
+      console.log('hihi');
+      if (input.length > 0) {
+        const products = [] as string[];
+        for (let i = 0; i < LIST_SIZE; i++) {
+          products.push(defferedInput);
+        }
+        setList(products);
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [defferedInput]);
 
   return (
     <div className='content'>
-      <h1>useTransition</h1>
+      <h1>useTransitionPush</h1>
       <header>
         <Link href='/'>Home</Link>
         <Link href='/hookUseTransitionFilter'>Filter</Link>
@@ -37,7 +47,7 @@ export default function HookUseTransition2() {
       {/* input */}
       <div className='input'>
         <label htmlFor=''>輸入篩選數字</label>
-        <input type='text' onChange={handleChange} />
+        <input type='text' value={input} onChange={handleChange} />
       </div>
 
       {/* items */}
