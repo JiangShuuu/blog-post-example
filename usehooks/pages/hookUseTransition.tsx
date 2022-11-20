@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useTransition } from 'react';
 import Link from 'next/link';
 import ProductList from '../components/ProductList';
 
@@ -18,12 +18,15 @@ const filterProducts = (filterTerm: string) => {
 };
 
 export default function HookUseTransition() {
+  const [isPending, startTransition] = useTransition();
   const [filterTerm, setFilterTerm] = useState('');
 
   const filteredProducts = filterProducts(filterTerm);
 
   const updateFilterHandler = (event: any) => {
-    setFilterTerm(event.target.value);
+    startTransition(() => {
+      setFilterTerm(event.target.value);
+    });
   };
 
   return (
@@ -37,7 +40,7 @@ export default function HookUseTransition() {
           <label htmlFor=''>輸入篩選數字</label>
           <input type='text' onChange={updateFilterHandler} />
         </div>
-        <ProductList products={filteredProducts} />
+        <ProductList products={filteredProducts} isPending={isPending} />
       </div>
     </>
   );

@@ -1,15 +1,21 @@
 import React from 'react';
 
-export default function ProductList({ products }: any) {
+export default function ProductList({ products, isPending }: any) {
   return (
     <div>
-      {products.map((item: string, idx: number) => {
-        return (
-          <div key={idx} className='item'>
-            <p>{item}</p>
-          </div>
-        );
-      })}
+      {isPending ? (
+        <p>isLoading....</p>
+      ) : (
+        <>
+          {products.map((item: string, idx: number) => {
+            return (
+              <div key={idx} className='item'>
+                <p>{item}</p>
+              </div>
+            );
+          })}
+        </>
+      )}
     </div>
   );
 }
