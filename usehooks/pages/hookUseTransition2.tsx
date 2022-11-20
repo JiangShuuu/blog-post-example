@@ -16,7 +16,7 @@ export default function HookUseTransition2() {
 
   const LIST_SIZE = 20000;
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputTerm(e.target.value);
     let products = [] as string[];
     startTransition(() => {
