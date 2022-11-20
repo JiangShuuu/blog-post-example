@@ -10,9 +10,10 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
-        <nav>
-          <Link href='/hookUseTransition'>useTransition</Link>
-        </nav>
+        <header>
+          <Link href='/hookUseTransitionFilter'>useTransition</Link>
+          <Link href='/hookUseId'>useId</Link>
+        </header>
       </main>
     </div>
   );

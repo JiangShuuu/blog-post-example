@@ -9,22 +9,20 @@ const generateProducts = () => {
   return products;
 };
 
-const filterProducts = (filterTerm: string) => {
-  if (!filterTerm) {
-    return generateProducts();
-  }
-  return generateProducts().filter((product: string) => product.includes(filterTerm));
-};
-
-export default function HookUseTransition() {
+export default function HookUseTransition2() {
+  console.log('reRender');
   const [isPending, startTransition] = useTransition();
-  const [filterTerm, setFilterTerm] = useState('');
+  const [list, setList] = useState([] as string[]);
 
-  const filteredProducts = filterProducts(filterTerm);
+  const LIST_SIZE = 20000;
 
-  const updateFilterHandler = (event: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     startTransition(() => {
-      setFilterTerm(event.target.value);
+      const products = [] as string[];
+      for (let i = 0; i < LIST_SIZE; i++) {
+        products.push(e.target.value);
+      }
+      setList(products);
     });
   };
 
@@ -33,12 +31,13 @@ export default function HookUseTransition() {
       <h1>useTransition</h1>
       <header>
         <Link href='/'>Home</Link>
+        <Link href='/hookUseTransitionFilter'>Filter</Link>
       </header>
 
       {/* input */}
       <div className='input'>
         <label htmlFor=''>輸入篩選數字</label>
-        <input type='text' onChange={updateFilterHandler} />
+        <input type='text' onChange={handleChange} />
       </div>
 
       {/* items */}
@@ -47,7 +46,7 @@ export default function HookUseTransition() {
           'isLoading....'
         ) : (
           <>
-            {filteredProducts.map((item: string, idx: number) => {
+            {list.map((item: string, idx: number) => {
               return (
                 <div key={idx} className='item'>
                   <p>{item}</p>
