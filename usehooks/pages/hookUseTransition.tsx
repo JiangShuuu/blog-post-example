@@ -1,6 +1,5 @@
 import React, { useState, useTransition } from 'react';
 import Link from 'next/link';
-import ProductList from '../components/ProductList';
 
 const generateProducts = () => {
   const products = [];
@@ -30,18 +29,34 @@ export default function HookUseTransition() {
   };
 
   return (
-    <>
-      <div className='content'>
-        <h1>useTransition</h1>
-        <header>
-          <Link href='/'>Home</Link>
-        </header>
-        <div className='input'>
-          <label htmlFor=''>輸入篩選數字</label>
-          <input type='text' onChange={updateFilterHandler} />
-        </div>
-        <ProductList products={filteredProducts} isPending={isPending} />
+    <div className='content'>
+      <h1>useTransition</h1>
+      <header>
+        <Link href='/'>Home</Link>
+      </header>
+
+      {/* input */}
+      <div className='input'>
+        <label htmlFor=''>輸入篩選數字</label>
+        <input type='text' onChange={updateFilterHandler} />
       </div>
-    </>
+
+      {/* items */}
+      <div>
+        {isPending ? (
+          'isLoading....'
+        ) : (
+          <>
+            {filteredProducts.map((item: string, idx: number) => {
+              return (
+                <div key={idx} className='item'>
+                  <p>{item}</p>
+                </div>
+              );
+            })}
+          </>
+        )}
+      </div>
+    </div>
   );
 }
