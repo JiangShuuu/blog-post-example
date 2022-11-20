@@ -45,3 +45,19 @@ header a {
   width: 100%;
   gap: 1rem;
 }
+
+.input {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.item {
+  border: 1px solid;
+  border-radius: 10px;
+  text-align: center;
+  margin: 0.5rem 0;
+  line-height: 0px;
+}

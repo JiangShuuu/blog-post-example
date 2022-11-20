@@ -4,7 +4,11 @@ export default function ProductList({ products }: any) {
   return (
     <div>
       {products.map((item: string, idx: number) => {
-        return <h1 key={idx}>{item}</h1>;
+        return (
+          <div key={idx} className='item'>
+            <p>{item}</p>
+          </div>
+        );
       })}
     </div>
   );

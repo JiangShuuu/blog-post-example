@@ -33,7 +33,7 @@ export default function HookUseTransition() {
         <header>
           <Link href='/'>Home</Link>
         </header>
-        <div>
+        <div className='input'>
           <label htmlFor=''>輸入篩選數字</label>
           <input type='text' onChange={updateFilterHandler} />
         </div>
