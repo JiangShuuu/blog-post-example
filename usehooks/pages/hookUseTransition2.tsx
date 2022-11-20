@@ -10,21 +10,20 @@ const generateProducts = () => {
 };
 
 export default function HookUseTransition2() {
+  console.log('reRender');
   const [isPending, startTransition] = useTransition();
-  const [inputTerm, setInputTerm] = useState('');
   const [list, setList] = useState([] as string[]);
 
   const LIST_SIZE = 20000;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputTerm(e.target.value);
-    let products = [] as string[];
     startTransition(() => {
+      const products = [] as string[];
       for (let i = 0; i < LIST_SIZE; i++) {
         products.push(e.target.value);
       }
+      setList(products);
     });
-    setList(products);
   };
 
   return (
