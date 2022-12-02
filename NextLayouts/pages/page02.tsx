@@ -1,7 +1,7 @@
 import React from 'react';
-import Layout from '../layouts/Layout01';
+import Layout02 from '../layouts/Layout';
 
-const page01 = () => {
+const page02 = () => {
   return (
     <>
       <style jsx>{`
@@ -14,11 +14,11 @@ const page01 = () => {
           font-size: 3rem;
         }
       `}</style>
-      <div>Page01</div>
+      <div>Page02</div>
     </>
   );
 };
 
-page01.withLayout = (page: React.ReactNode) => <Layout>{page}</Layout>;
+page02.withLayout = (page: React.ReactNode) => <Layout02>{page}</Layout02>;
 
-export default page01;
+export default page02;

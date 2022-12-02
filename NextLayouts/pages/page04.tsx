@@ -1,5 +1,5 @@
 import React from 'react';
-import { withLayout04 } from '../layouts/Layout01';
+import { withLayout04 } from '../layouts/Layout';
 
 const page04 = () => {
   return <div>page04</div>;

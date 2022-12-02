@@ -6,7 +6,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-function Layout01({ children }: Props) {
+function Layout02({ children }: Props) {
   return (
     <>
       <style jsx>{`
@@ -18,7 +18,8 @@ function Layout01({ children }: Props) {
       `}</style>
       <div>
         <Header />
-        <p>Layout01</p>
+
+        <p>Layout02</p>
         {children}
         <Footer />
       </div>
@@ -26,8 +27,15 @@ function Layout01({ children }: Props) {
   );
 }
 
-const withLayout = (Component: any) => {
-  Component.withLayout = (page: React.ReactNode) => <Layout01>{page}</Layout01>;
+const withLayout03 = (Component: any) => {
+  Component.withLayout = (page: React.ReactNode) => {
+    return (
+      <>
+        <h2>withLayout03</h2>
+        <Layout02>{page}</Layout02>
+      </>
+    );
+  };
   return Component;
 };
 
@@ -44,6 +52,6 @@ const withLayout04 = (Component: any) => {
   return Component;
 };
 
-export default Layout01;
+export default Layout02;
 
-export { withLayout, withLayout04 };
+export { withLayout03, withLayout04 };
