@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useTransition, useDeferredValue } from 'react';
+import React, { useState, useTransition } from 'react';
 import Link from 'next/link';
 
 const generateProducts = () => {
@@ -17,24 +17,19 @@ export default function HookUseTransition2() {
   const LIST_SIZE = 15000;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // hight
     setInput(e.target.value);
-  };
-
-  const defferedInput = useDeferredValue(input);
-
-  useEffect(() => {
+    // low
     startTransition(() => {
-      console.log('hihi');
       if (input.length > 0) {
         const products = [] as string[];
         for (let i = 0; i < LIST_SIZE; i++) {
-          products.push(defferedInput);
+          products.push(input);
         }
         setList(products);
       }
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [defferedInput]);
+  };
 
   return (
     <div className='content'>
