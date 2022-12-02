@@ -36,12 +36,11 @@ export default function HookUseTransition2() {
       <h1>useTransitionPush</h1>
       <header>
         <Link href='/'>Home</Link>
-        <Link href='/hookUseTransitionFilter'>Filter</Link>
       </header>
 
       {/* input */}
       <div className='input'>
-        <label htmlFor=''>輸入篩選數字</label>
+        <label htmlFor=''>輸入Array數字</label>
         <input type='text' value={input} onChange={handleChange} />
       </div>
 
