@@ -80,7 +80,7 @@ export default function Home({ data }: any) {
           <link rel='icon' href='/favicon.ico' />
         </Head>
         <main>
-          <h2>Next SSG ID</h2>
+          <h2>Next ISR ID</h2>
           <Nav linkUrl={linkUrl} />
           <div className='data'>
             <p>id: {data.id}</p>
