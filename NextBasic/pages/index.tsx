@@ -1,5 +1,17 @@
 import Head from 'next/head';
 import Nav from '../components/Nav';
+
+const linkUrl = [
+  {
+    name: 'ssr',
+    link: '/ssr'
+  },
+  {
+    name: 'ssg',
+    link: '/ssg'
+  }
+];
+
 export default function Home() {
   return (
     <>
@@ -11,7 +23,7 @@ export default function Home() {
         </Head>
         <main>
           <h2>Next Basic</h2>
-          <Nav />
+          <Nav linkUrl={linkUrl} />
         </main>
       </div>
 

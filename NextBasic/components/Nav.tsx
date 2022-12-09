@@ -1,21 +1,29 @@
 import React from 'react';
 import Link from 'next/link';
-export default function Nav() {
+import { useRouter } from 'next/router';
+
+type links = {
+  name: string;
+  link: string;
+};
+
+interface linkUrlType {
+  linkUrl: links[];
+}
+
+export default function Nav({ linkUrl }: linkUrlType) {
+  const router = useRouter().asPath;
+
   return (
     <>
       <div className='main'>
-        <Link href='/ssg'>
-          <button>ssg</button>
-        </Link>
-        <Link href='/ssg/:id'>
-          <button>ssg/id</button>
-        </Link>
-        <Link href='/ssr'>
-          <button>ssr</button>
-        </Link>
-        <Link href='/ssr/:id'>
-          <button>ssr/id</button>
-        </Link>
+        {linkUrl.map((item, idx) => {
+          return (
+            <Link key={idx} href={item.link}>
+              <button disabled={router === item.link}>{item.name}</button>
+            </Link>
+          );
+        })}
       </div>
 
       <style jsx>{`
@@ -26,6 +34,20 @@ export default function Nav() {
           padding: 0.25rem 1rem;
           border-radius: 5px;
           transition: 0.2s;
+        }
+
+        .disabled {
+          color: blue;
+          cursor: not-allowed;
+        }
+
+        button:disabled {
+          color: red;
+          cursor: not-allowed;
+        }
+        button:disabled:hover {
+          background-color: white;
+          color: red;
         }
 
         button:hover {
