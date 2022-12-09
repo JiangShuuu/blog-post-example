@@ -75,7 +75,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 export default function Home({ data }: any) {
   const router = useRouter();
 
-  //
+  // fallback true 使用
   if (router.isFallback) {
     return <h1>Loading...</h1>;
   }
@@ -89,7 +89,7 @@ export default function Home({ data }: any) {
           <link rel='icon' href='/favicon.ico' />
         </Head>
         <main>
-          <h2>Next SSG</h2>
+          <h2>Next SSG ID</h2>
           <Nav linkUrl={linkUrl} />
           <div className='data'>
             <p>name: {data.name}</p>
