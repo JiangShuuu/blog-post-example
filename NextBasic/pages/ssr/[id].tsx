@@ -33,7 +33,15 @@ const getData = async (id: number) => {
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const id = Number(params && params.id);
-  const data = await getData(id);
+  let data = null;
+
+  try {
+    data = await getData(id);
+  } catch (err) {
+    return {
+      notFound: true
+    };
+  }
 
   return {
     props: {
