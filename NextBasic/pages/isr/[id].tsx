@@ -10,43 +10,41 @@ const linkUrl = [
     link: '/'
   },
   {
+    name: 'all',
+    link: '/isr'
+  },
+  {
     name: '01',
-    link: '/ssg/1'
+    link: '/isr/1'
   },
   {
     name: '02',
-    link: '/ssg/2'
+    link: '/isr/2'
   },
   {
     name: '03',
-    link: '/ssg/3'
+    link: '/isr/3'
   },
   {
     name: '04',
-    link: '/ssg/4'
+    link: '/isr/4'
+  },
+  {
+    name: '05',
+    link: '/isr/5'
   }
 ];
 
-const getData = async (id: number) => {
-  const { data } = await axios.get(`https://swapi.dev/api/people/${id}`);
-  return data;
-};
+export const getStaticPaths = async () => {
+  const { data } = await axios.get('http://localhost:4000/products');
 
-export const getStaticPaths = () => {
-  // 可以用 axios 先去預抓 data 資料內的 id
-  // const paths = data.map(item => {
-  //   return params: {id: item.id.toString()}
-  // })
+  const paths = data.map((item: any) => ({
+    params: { id: item.id.toString() }
+  }));
+  console.log(paths);
 
   return {
-    paths: [{ params: { id: '1' } }, { params: { id: '2' } }, { params: { id: '3' } }],
-
-    /*
-      false: 找不到指定id則導向404, 
-      true: 直接往下執行, 有 router.isFallback 可使用, 404要另外設定找不到id return notFound
-      blocking: 跟true一樣往下執行, 但沒有 router.isFallback使用 404要另外設定找不到id return notFound
-    */
-
+    paths,
     // fallback: true
     fallback: false
     // fallback: 'blocking'
@@ -55,20 +53,13 @@ export const getStaticPaths = () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = Number(params && params.id);
-  let data = null;
-
-  try {
-    data = await getData(id);
-  } catch (err) {
-    return {
-      notFound: true
-    };
-  }
+  const { data } = await axios.get(`http://localhost:4000/products/${id}`);
 
   return {
     props: {
       data
-    }
+    },
+    revalidate: 10
   };
 };
 
@@ -92,8 +83,8 @@ export default function Home({ data }: any) {
           <h2>Next SSG ID</h2>
           <Nav linkUrl={linkUrl} />
           <div className='data'>
+            <p>id: {data.id}</p>
             <p>name: {data.name}</p>
-            <p>url: {data.url}</p>
           </div>
           <p>{JSON.stringify(data)}</p>
         </main>
