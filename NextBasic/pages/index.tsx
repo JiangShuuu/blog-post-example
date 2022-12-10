@@ -9,6 +9,10 @@ const linkUrl = [
   {
     name: 'ssg',
     link: '/ssg'
+  },
+  {
+    name: 'isr',
+    link: '/isr'
   }
 ];
 
